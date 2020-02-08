@@ -1,3 +1,10 @@
-<view>
-  <text>hello</text>
-</view>
+<!-- 容器 -->
+<view class="container">
+  <image class="user-avatar" src="/images/avatar.png"></image>
+  <text class="user-name">hello, 柠檬🍋</text>
+  <!-- 小程序中有button但是大多数时候都是使用模拟的按钮 -->
+  <!-- <button></button> -->
+  <view class="moto-container">
+    <text class="moto">开启小程序之旅</text> 
+  </view>
+</view> 
