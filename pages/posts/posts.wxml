@@ -1,0 +1,33 @@
+<view>
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}">
+    <swiper-item>
+      <image src="/images/wx.png"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/vr.png"></image>
+    </swiper-item> 
+    <swiper-item>
+      <image src="/images/iqiyi.png"></image>
+    </swiper-item>
+  </swiper>
+ 
+ <!-- 子元素名字默认值为item,下标默认是index -->
+  <block wx:for='{{posts_key}}' wx:for-item="item" wx:for-index='idx'>
+    <view class="post-container">
+      <view class="post-author-date">
+        <image src="{{item.avatar}}" class="post-author"></image>
+        <text class="post-date">{{item.date}}</text>
+      </view>
+      <text class="post-title">{{item.title}}</text>
+      <image class="post-image" src="{{item.headImgSrc}}"></image>
+      <text class="post-content">{{item.content}}</text>
+      <view class="post-like">
+        <image class="post-like-image" src="../../images/icon/chat.png"></image>
+        <text class="post-like-font">{{item.collection}}</text>
+        <image class="post-like-image" src="../../images/icon/view.png"></image>
+        <text class="post-like-font">{{item.reading}}</text>
+      </view>
+    </view>
+  </block>
+
+</view>
