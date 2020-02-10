@@ -17,7 +17,10 @@
  <!-- 子元素名字默认值为item,下标默认是index -->
   <block wx:for='{{posts_key}}' wx:for-item="item" wx:for-index='idx'>
   <!-- is的值是模板的name -->
-    <template is="postItem" data="{{item}}"></template>
+  <view catchtap="onPostTap" data-postid="{{item.postId}}">
+    <template is="postItem" data="{{...item}}"></template>
+  </view>
+    
   </block>
 
 </view>
