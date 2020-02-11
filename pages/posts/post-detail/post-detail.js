@@ -45,7 +45,7 @@ Page({
     })
     wx.onBackgroundAudioPause (function() {
       that.setData({
-        isPlayingMusic: false
+        isPlayingMusic: false 
       })
       app.globalData.g_isPlayingMusic = false;
       app.globalData.g_currentMusicPostId = null;
@@ -144,7 +144,6 @@ Page({
         isPlayingMusic: true
       });
     }
-
 
   }
 })
