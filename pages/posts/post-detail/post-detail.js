@@ -144,6 +144,5 @@ Page({
         isPlayingMusic: true
       });
     }
-
   }
 })
