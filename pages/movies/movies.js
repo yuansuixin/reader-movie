@@ -8,7 +8,7 @@ Page({
     inTheaters:{},
     comingSoon:{},
     top250:{}
-  },
+  }, 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,6 +22,12 @@ Page({
     this.getMovieListData(baseUrl + comingSoonUrl,'comingSoon','即将上映');
     this.getMovieListData(baseUrl + top250Url,'top250','豆瓣Top250');
 
+  },
+  onMoreTap:function(event){
+    var category = event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: 'more-movie/more-movie?category='+category,
+    })
   },
   getMovieListData: function (url, settedKey, cagetoryTitle){
     var that = this;

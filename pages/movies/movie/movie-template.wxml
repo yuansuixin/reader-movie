@@ -6,3 +6,4 @@
     <template is="starsTemplate" data="{{stars:stars,score:average}}"></template>
   </view>
 </template>
+ 
