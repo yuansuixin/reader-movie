@@ -38,6 +38,12 @@ Page({
     this.setData({ requestUrl: dataUrl})
     util.http(dataUrl, this.processDoubanData);
   },
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId
+    })
+  },
   // onScrollLower:function(event){
   //   var nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20';
   //   util.http(nextUrl, this.processDoubanData);
@@ -54,6 +60,7 @@ Page({
     var refreshUrl = this.data.requestUrl + '?start=0&count=20';
     this.data.movies = {}
     this.data.isEmpty = true
+    this.data.totalCount = 0
     util.http(refreshUrl,this.processDoubanData)
     wx.showNavigationBarLoading()
   },

@@ -32,6 +32,12 @@ Page({
       url: 'more-movie/more-movie?category='+category,
     })
   },
+  onMovieTap: function (event){
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId
+    })
+  },
   getMovieListData: function (url, settedKey, cagetoryTitle){
     var that = this;
     // 是异步调用
