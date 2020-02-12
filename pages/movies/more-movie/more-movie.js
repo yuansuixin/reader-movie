@@ -38,9 +38,23 @@ Page({
     this.setData({ requestUrl: dataUrl})
     util.http(dataUrl, this.processDoubanData);
   },
-  onScrollLower:function(event){
-    var nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20';
-    util.http(nextUrl, this.processDoubanData);
+  // onScrollLower:function(event){
+  //   var nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20';
+  //   util.http(nextUrl, this.processDoubanData);
+  //   wx.showNavigationBarLoading()
+  // },
+
+  onReachBottom: function (event) {
+    var nextUrl = this.data.requestUrl +
+      "?start=" + this.data.totalCount + "&count=20";
+    util.http(nextUrl, this.processDoubanData)
+    wx.showNavigationBarLoading()
+  },
+  onPullDownRefresh:function(){
+    var refreshUrl = this.data.requestUrl + '?start=0&count=20';
+    this.data.movies = {}
+    this.data.isEmpty = true
+    util.http(refreshUrl,this.processDoubanData)
     wx.showNavigationBarLoading()
   },
   processDoubanData: function (moviesDouban){
@@ -73,6 +87,7 @@ Page({
     this.setData({ movies: totalMovies});
     this.data.totalCount += 20
     wx.hideNavigationBarLoading()
+    wx.stopPullDownRefresh() 
   },
 
   /**

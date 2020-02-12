@@ -7,7 +7,10 @@ Page({
     //异步请求绑定对象的时候需要有初始值，否则找不到
     inTheaters:{},
     comingSoon:{},
-    top250:{}
+    top250:{},
+    searchResult:{},
+    containerShow:true,
+    searchPanelShow:false
   }, 
   /**
    * 生命周期函数--监听页面加载
@@ -43,6 +46,26 @@ Page({
         that.processDoubanData(res.data, settedKey, cagetoryTitle);
       }
     })
+  },
+  onBindFocus:function(){
+    this.setData({
+      containerShow:false,
+      searchPanelShow:true
+    })
+  },
+  onCancelImgTap:function(){
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false,
+      searchResult:{}
+    })
+  },
+  onBindChange:function(event){
+    var text = event.detail.value;
+    // console.log('text==',text)
+    var baseUrl = app.globalData.doubanBase;
+    var searchUrl = baseUrl+"/v2/movie/search?q=" + text;
+    this.getMovieListData(searchUrl, "searchResult", "");
   },
   processDoubanData: function (moviesDouban, settedKey,cagetoryTitle){
     var movies = [];
